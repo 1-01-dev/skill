@@ -5,7 +5,7 @@ description: Turn significant completed coding tasks into accurate, visual, Obsi
 
 # Learning Coder
 
-Use this skill when the user asks to explain, document, teach, or turn a completed coding task into a learning artifact. The default artifact is an Obsidian-friendly Markdown file.
+Use this skill when the user asks to explain, document, teach, or turn a completed coding task into a learning artifact. When installed through the DSH Learning Coder plugin, the plugin may invoke this skill automatically after a meaningful coding turn.
 
 ## Core objective
 
@@ -21,6 +21,27 @@ Always distinguish:
 - **When** the same concept is useful elsewhere
 
 Do not invent details. Ground explanations in the actual completed work, relevant files, diffs, command results, tests, and other available evidence.
+
+## Automatic DSH mode
+
+When invoked by `dsh-learning-coder`, this skill is part of an automatic post-task documentation pass.
+
+The plugin supplies the current workspace path and the workspace learning-library path in the invocation context. **Those paths override the generic `docs/learning/` example below.**
+
+In automatic mode:
+
+1. Treat the completed coding turn as the unit of work, not the session.
+2. Inspect the session history, changed files, tool results, and project state needed to understand the task.
+3. Decide whether the turn contains meaningful engineering work worth teaching.
+4. If it is trivial, conversational, exploratory without a completed change, or otherwise not educational, do not create a chapter.
+5. Otherwise create exactly one chapter for the completed task in the supplied workspace learning-library directory.
+6. Keep the chapter attached to the workspace/project. Never create a session-log document.
+7. Do not ask the user for confirmation.
+8. Do not modify application source code while documenting the task.
+9. Update the workspace learning index only when necessary.
+10. Report the created or updated chapter path briefly when finished.
+
+The automatic pass may use another agent turn to write the artifact. That documentation turn must not create another documentation chapter.
 
 ## When to activate
 
@@ -80,6 +101,8 @@ Create a Markdown file suitable for Obsidian, usually under:
 ```text
 docs/learning/
 ```
+
+When running inside the DSH Learning Coder plugin, use the plugin-provided workspace library path instead of this generic location.
 
 Use YAML frontmatter with useful metadata when it can be established safely:
 
