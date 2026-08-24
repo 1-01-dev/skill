@@ -1,6 +1,6 @@
 {
   "name": "dsh-learning-coder",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "DeepSeek Harness workspace learning library UI and Learning Coder skill",
   "type": "module",
   "main": "lib/index.js",
