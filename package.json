@@ -1,6 +1,6 @@
 {
   "name": "dsh-learning-coder",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "DeepSeek Harness workspace learning library UI and Learning Coder skill",
   "type": "module",
   "main": "lib/index.js",
@@ -9,35 +9,10 @@
     "./client": "./lib/client.js",
     "./package.json": "./package.json"
   },
-  "files": [
-    "lib",
-    "skills",
-    "README.md",
-    "LICENSE",
-    "cordis.patch.yml"
-  ],
+  "files": ["lib","skills","README.md","LICENSE","cordis.patch.yml"],
   "license": "MIT",
   "keywords": ["deepseek", "deepseek-harness", "dsh", "dsh-plugin", "learning", "obsidian", "coding"],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/1-01-dev/skill.git"
-  },
-  "dsh": {
-    "bundle": {
-      "patch": "./cordis.patch.yml"
-    },
-    "client": {
-      "inject": [
-        "@deepseek-ai/dsh-client-runtime",
-        "@deepseek-ai/dsh-client-ui-slots",
-        "@deepseek-ai/dsh-client-locale",
-        "@deepseek-ai/dsh-client-ui-conversation",
-        "@deepseek-ai/dsh-client-ui-settings"
-      ],
-      "platform": "web"
-    }
-  },
-  "peerDependencies": {
-    "react": "^18.2.0"
-  }
+  "repository": {"type": "git", "url": "git+https://github.com/1-01-dev/skill.git"},
+  "dsh": {"bundle": {"patch": "./cordis.patch.yml"},"client": {"inject": ["@deepseek-ai/dsh-client-runtime","@deepseek-ai/dsh-client-ui-slots","@deepseek-ai/dsh-client-ui-locale","@deepseek-ai/dsh-client-ui-conversation","@deepseek-ai/dsh-client-ui-settings","@deepseek-ai/dsh-client-ui-layout"],"platform": "web"}},
+  "peerDependencies": {"react": "^18.2.0"}
 }
