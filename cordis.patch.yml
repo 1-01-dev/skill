@@ -1,0 +1,4 @@
+# Mount the DSH Learning Coder plugin as one composition row.
+- insert:
+    - id: dsh-learning-coder
+      name: 'dsh-learning-coder'
