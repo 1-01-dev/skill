@@ -1,6 +1,6 @@
 {
   "name": "dsh-learning-coder",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "DeepSeek Harness workspace learning library UI and Learning Coder skill",
   "type": "module",
   "main": "lib/index.js",
@@ -30,7 +30,9 @@
       "inject": [
         "@deepseek-ai/dsh-client-runtime",
         "@deepseek-ai/dsh-client-ui-slots",
-        "@deepseek-ai/dsh-client-locale"
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-settings"
       ],
       "platform": "web"
     }
