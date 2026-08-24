@@ -9,13 +9,12 @@
     "./client": "./lib/client.js",
     "./package.json": "./package.json"
   },
-  "files": ["lib", "skills", "README.md", "LICENSE", "cordis.patch.yml", "scripts"],
+  "files": ["lib", "skills", "README.md", "LICENSE", "cordis.patch.yml"],
   "license": "MIT",
   "keywords": ["deepseek", "deepseek-harness", "dsh", "dsh-plugin", "learning", "obsidian", "coding"],
   "repository": {"type": "git", "url": "git+https://github.com/1-01-dev/skill.git"},
   "scripts": {
-    "check": "node --check lib/index.js && node --check lib/client.js",
-    "prepare": "node scripts/normalize-client-bundle.mjs"
+    "check": "node --check lib/index.js && node --check lib/client.js"
   },
   "dsh": {
     "bundle": {"patch": "./cordis.patch.yml"},
