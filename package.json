@@ -1,6 +1,6 @@
 {
   "name": "dsh-learning-coder",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "DeepSeek Harness workspace learning library UI and Learning Coder skill",
   "type": "module",
   "main": "lib/index.js",
@@ -9,12 +9,13 @@
     "./client": "./lib/client.js",
     "./package.json": "./package.json"
   },
-  "files": ["lib", "skills", "README.md", "LICENSE", "cordis.patch.yml"],
+  "files": ["lib", "skills", "README.md", "LICENSE", "cordis.patch.yml", "scripts"],
   "license": "MIT",
   "keywords": ["deepseek", "deepseek-harness", "dsh", "dsh-plugin", "learning", "obsidian", "coding"],
   "repository": {"type": "git", "url": "git+https://github.com/1-01-dev/skill.git"},
   "scripts": {
-    "check": "node --check lib/index.js && node --check lib/client.js"
+    "check": "node --check lib/index.js && node --check lib/client.js",
+    "prepare": "node scripts/normalize-client-bundle.mjs"
   },
   "dsh": {
     "bundle": {"patch": "./cordis.patch.yml"},
