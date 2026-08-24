@@ -16,104 +16,107 @@ Instead of producing a conventional changelog, the skill transforms a significan
 
 The default output is **Markdown designed for Obsidian**.
 
-## What makes it different
-
-Learning Coder is designed around one principle:
+## Why Learning Coder
 
 > **Do not merely document the implementation. Teach the reasoning behind it.**
 
-A lesson can combine prose, code, Mermaid diagrams, ASCII diagrams, tables, Obsidian callouts, and checklists. Visual material should be used only when it genuinely improves understanding.
+A lesson can combine prose, code, Mermaid diagrams, ASCII diagrams, tables, Obsidian callouts, and learning checklists. Visual material should appear only when it genuinely improves understanding.
 
-## Output format
+## What the skill produces
 
-The generated lesson is Markdown-first and works well inside an Obsidian vault.
+A typical lesson can include:
 
-Typical frontmatter:
+- a learning goal and problem statement;
+- a compact mental model;
+- Before → After comparisons;
+- the actual implementation changes;
+- important technical concepts;
+- visual explanations;
+- decision and trade-off blocks;
+- focused code deep dives;
+- debugging investigation paths;
+- common failure modes;
+- a "build it yourself" mental model;
+- project-architecture context;
+- key takeaways;
+- a glossary;
+- a learning checkpoint;
+- further learning suggestions.
+
+The structure is **adaptive**. A debugging task should not look like a UI lesson, and a backend task should not be forced into a mobile/native template.
+
+## Obsidian-first
+
+The primary format is Markdown suitable for an Obsidian vault.
+
+The skill can use:
+
+- Obsidian callouts such as `[!abstract]`, `[!tip]`, `[!warning]`, `[!question]`, `[!success]`, and `[!info]`;
+- Mermaid diagrams for architecture, flows, state transitions, dependencies, and request paths;
+- compact ASCII diagrams for small structures;
+- focused code snippets rather than full-file dumps;
+- comparison tables for alternatives;
+- checklists for learning checkpoints;
+- Dataview-compatible YAML frontmatter for later aggregation.
+
+Prefer narrow, readable diagrams. Vertical Mermaid layouts (`flowchart TD`) are preferred when a horizontal diagram would overflow a normal Obsidian reading pane.
+
+## Example frontmatter
 
 ```yaml
 ---
 type: learning
 project: my-project
+date: 2026-08-24
+status: completed
 difficulty: intermediate
 task_type: debugging
 topics:
-  - React
-  - TypeScript
+  - React Native
+  - iOS
+technologies:
+  - Expo
+  - Xcode
 concepts:
-  - state-management
-  - component-composition
+  - native-modules
+  - dependency-management
+  - ios-build
 ---
 ```
 
-The skill may use:
+Only add metadata that can be established reliably.
 
-- Obsidian callouts such as `[!abstract]`, `[!tip]`, `[!warning]`, `[!question]`, and `[!success]`;
-- Mermaid diagrams for flows, architecture, state transitions, and relationships;
-- compact ASCII diagrams when Mermaid would be unnecessarily large;
-- focused code snippets rather than full-file dumps;
-- comparison tables for alternatives and trade-offs;
-- self-checklists and learning checkpoints;
-- Dataview-compatible frontmatter for later aggregation into a learning dashboard.
+## Example invocation
 
-## Typical lesson structure
+After completing a significant task:
 
-The structure is adaptive rather than rigid. A lesson usually contains the parts that best fit the task:
+```text
+Create a Learning Coder chapter for the task you just completed.
+Use the project changes, relevant files, and verification results as evidence.
+Write an Obsidian-friendly Markdown lesson and save it under docs/learning/.
+```
 
-1. Learning goal / problem statement
-2. Mental model
-3. Before → After
-4. What actually changed
-5. Important concepts
-6. Visual explanation
-7. Why this approach
-8. Agent investigation and decisions
-9. Relevant code deep dive
-10. Common mistakes / failure modes
-11. How to build it yourself
-12. Connection to the wider project
-13. Key takeaways
-14. Glossary
-15. Learning checkpoint
-16. Further learning
+Or simply:
 
-A UI task, debugging task, backend task, architecture change, and refactor should not be forced into the same template. The agent should select and order sections according to the actual work.
+```text
+Explain the last completed debugging task as a visual learning chapter.
+```
 
-## Visual principles
+## Quality principles
 
-The output should feel like a polished technical lesson, not an AI-generated dashboard.
+Learning Coder should:
 
-Use visuals when they reduce cognitive load:
+1. Base the chapter on the actual completed work.
+2. Explain reasoning, not only actions.
+3. Separate verified facts from inference.
+4. Teach reusable mental models.
+5. Use visuals only when they make a concept easier to understand.
+6. Keep diagrams and code readable in Obsidian.
+7. Avoid decorative or overly dashboard-like formatting.
+8. Avoid inventing alternatives, decisions, or implementation details.
+9. Make the resulting note useful even months after the task was completed.
 
-- responsive UI → layout diagrams;
-- architecture → component or dependency diagrams;
-- data flow → flowcharts;
-- state logic → state diagrams;
-- API work → request/response diagrams;
-- refactors → old/new architecture;
-- debugging → symptom → hypothesis → evidence → fix;
-- animations → timelines.
-
-Keep diagrams narrow enough to work inside a normal Obsidian reading pane. Prefer vertical Mermaid layouts (`flowchart TD`) when a horizontal diagram would overflow.
-
-## Learning principles
-
-The skill should consistently answer four questions:
-
-### What?
-What actually changed?
-
-### Why?
-Why was this solution chosen?
-
-### How?
-How does the implementation work?
-
-### When?
-When would the same concept or technique be useful elsewhere?
-
-The lesson should also capture significant agent decisions, especially when the path was not obvious.
-
-For debugging tasks, prefer:
+For debugging, the preferred explanatory sequence is:
 
 ```text
 Symptom
@@ -131,57 +134,24 @@ Fix
 Verification
 ```
 
-This makes the reasoning reusable instead of merely recording the final command.
+## Dataview / DataviewJS
 
-## Dataview support
+Dataview and DataviewJS are optional. They are most useful for a collection-level dashboard rather than as decoration inside every lesson.
 
-Dataview and DataviewJS are optional. They should be used when they add value across a collection of lessons, not as decoration inside every individual note.
+The metadata can later be aggregated by:
 
-Useful metadata can include:
+- project;
+- date;
+- difficulty;
+- task type;
+- technologies;
+- concepts.
 
-```yaml
----
-type: learning
-project: VOIXI
-date: 2026-08-24
-status: completed
-difficulty: intermediate
-task_type: debugging
-topics:
-  - React Native
-  - iOS
-  - CocoaPods
-technologies:
-  - Expo
-  - Xcode
-concepts:
-  - native-modules
-  - dependency-management
-  - ios-build
----
-```
+The skill should not create a DataviewJS dashboard unless requested or clearly justified by the task.
 
-A separate dashboard can later aggregate these notes by project, technology, concept, difficulty, task type, or date.
+## Installation
 
-## What it should avoid
-
-Do not:
-
-- invent implementation details that were not observed;
-- describe every tool call as a separate lesson;
-- dump complete files when a small excerpt explains the idea;
-- use decorative diagrams that add no information;
-- create excessively wide Mermaid diagrams;
-- force every lesson into a fixed section list;
-- confuse the agent's internal reasoning with verified facts;
-- claim that an alternative was considered unless the evidence supports it;
-- optimize for visual novelty over readability.
-
-The finished chapter should explain the real work accurately and remain understandable months later.
-
-## Recommended installation
-
-For OpenCode, place the skill at one of the supported skill locations, for example:
+For OpenCode, place the skill in a supported skill directory, for example:
 
 ```text
 .opencode/skills/learning-coder/SKILL.md
@@ -193,26 +163,21 @@ or globally:
 ~/.config/opencode/skills/learning-coder/SKILL.md
 ```
 
-See the OpenCode Skills documentation for the exact installation and discovery behavior.
+The skill consists of the main `SKILL.md` plus a small style reference under `references/`.
 
-## Example invocation
-
-After completing a significant task, ask the agent:
+## Repository structure
 
 ```text
-Create a Learning Coder chapter for the task you just completed.
-Use the project changes, relevant files, and verification results as evidence.
-Write an Obsidian-friendly Markdown lesson and save it under docs/learning/.
-```
-
-The skill can also be invoked explicitly with a request such as:
-
-```text
-Explain the last completed debugging task as a visual learning chapter.
+skills/
+└── learning-coder/
+    ├── SKILL.md
+    └── references/
+        └── STYLE.md
+README.md
 ```
 
 ## Project philosophy
 
-Learning Coder is meant for **vibe coding with deliberate learning**.
+Learning Coder is designed for **vibe coding with deliberate learning**.
 
-The goal is not to slow down development by turning every action into documentation. The goal is to make meaningful completed work accumulate into a searchable, visual record of the engineering concepts learned while building the project itself.
+The purpose is not to turn every tool call into documentation. The purpose is to let meaningful completed work accumulate into a searchable, visual record of the engineering concepts learned while building a real project.
